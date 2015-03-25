@@ -1,5 +1,5 @@
 syntax on
-color slate
+color FoxColor
 set nu
 set ai
 set ts=4
