@@ -1,5 +1,5 @@
 syntax on
-color FoxColor
+color molokai
 set nu
 set ai
 set ts=4
