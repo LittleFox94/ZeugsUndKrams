@@ -1,0 +1,54 @@
+own_window true
+own_window_type panel
+double_buffer true
+update_interval 0.5
+border_outer_margin 0
+border_inner_margin 0
+gap_x 0
+gap_y 0
+minimum_size 1500 60
+default_color aaaaaa
+override_utf8_locale yes
+default_graph_size 80 5
+default_bar_size 80 5
+mpd_host 172.16.0.5
+mpd_port 8066
+TEXT
+${color FFFF00}${time KW %V, }${color 00FF00}${time %H:%M:%S}
+${color FF4444}${time %a, %d %b %y} 
+${color}$kernel
+${color ffffff}Uptime: ${color 00ff00}$uptime 
+${color ffffff}Threads: ${color 00ff00}$threads
+${color ffffff}Avg: ${color 00ff00}${loadavg 1} ${loadavg 2} ${loadavg 3}
+${color}${voffset -60}\
+${goto 150}${color white}eth0${color}
+${goto 130}${upspeedgraph eth0 20,80}${offset 5}${voffset 5}UP: ${upspeed eth0}${voffset 10}${goto 215}TO: ${totalup eth0}${voffset -15}
+${voffset -5}\
+${goto 130}${downspeedgraph eth0 20,80}${offset 5}${voffset 5}DO: ${downspeed eth0}${voffset 10}${goto 215}TO: ${totaldown eth0}${voffset -15}
+${voffset -65}\
+${goto 310}${color white}CPU/MEM${color}
+${goto 290}${color 446644}\
+${goto 290}${color white}${memgraph 20,80}${offset 5}${voffset 5}${memeasyfree}${voffset 10}${goto 375}${mem}${voffset -15}
+${voffset -5}\
+${goto 290}${cpugraph 20,80}${offset 5}${voffset 5}${cpu cpu1} ${cpu cpu2} ${cpu cpu3} ${cpu cpu4}${voffset -10}${goto 375}${cpu cpu5} ${cpu cpu6} ${cpu cpu7} ${cpu cpu8}
+${voffset -60}\
+${goto 470}${color white}DISK${color}
+${goto 450}${diskiograph_read sda 20,80}${offset 5}${voffset -10}R: ${diskio_read}
+${voffset -5}
+${goto 450}${diskiograph_write sda 20,80}${offset 5}${voffset -10}W: ${diskio_write}
+${voffset -65}
+${goto 610}${color 00FF00}${top_mem mem_res 1}${goto 660}${color FFFFFF}${top_mem name 1}${goto 740}${color 00FF00}${top cpu 1}${goto 780}${color FFFFFF}${top name 1}
+${goto 610}${color 00FF00}${top_mem mem_res 2}${goto 660}${color FFFFFF}${top_mem name 2}${goto 740}${color 00FF00}${top cpu 2}${goto 780}${color FFFFFF}${top name 2}
+${goto 610}${color 00FF00}${top_mem mem_res 3}${goto 660}${color FFFFFF}${top_mem name 3}${goto 740}${color 00FF00}${top cpu 3}${goto 780}${color FFFFFF}${top name 3}
+${goto 610}${color 00FF00}${top_mem mem_res 4}${goto 660}${color FFFFFF}${top_mem name 4}${goto 740}${color 00FF00}${top cpu 4}${goto 780}${color FFFFFF}${top name 4}
+${goto 610}${color 00FF00}${top_mem mem_res 5}${goto 660}${color FFFFFF}${top_mem name 5}${goto 740}${color 00FF00}${top cpu 5}${goto 780}${color FFFFFF}${top name 5}
+${goto 610}${color 00FF00}${top_mem mem_res 6}${goto 660}${color FFFFFF}${top_mem name 6}${goto 740}${color 00FF00}${top cpu 6}${goto 780}${color FFFFFF}${top name 6}
+${voffset -60}\
+${goto 880}${color BBFFBB}root${color 3399ff}${goto 910}${fs_bar 5,80 /} ${color 00ff00}${fs_used /}${color ffff00}/${color 00ff00}${fs_size /}
+${goto 880}${color BBFFBB}home${color 3399ff}${goto 910}${fs_bar 5,80 /home} ${color 00ff00}${fs_used /home}${color ffff00}/${color 00ff00}${fs_size /home}
+${goto 880}${color BBFFBB}bat0${color 3399ff}${goto 910}${color BBFFBB}${execbar cat /sys/class/power_supply/BAT0/capacity} ${color 00ff00}${exec cat /sys/class/power_supply/BAT0/capacity}%
+${color 505050}${goto 880}${mpd_bar 11,470}
+${voffset -27}
+${color 00ff00}${goto 885}${mpd_artist} - ${mpd_album} - ${mpd_title}
+${voffset 10}\
+${voffset -600}\

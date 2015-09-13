@@ -1,0 +1,18 @@
+#!/usr/bin/perl -w
+
+use strict;
+use warnings;
+use Convert::Ascii85 qw( ascii85_encode ascii85_decode );
+
+my $data = ();
+
+while(<STDIN>) {
+    $data .= $_;
+}
+
+if(exists $ARGV[0] && $ARGV[0] eq '-d') {
+    print(ascii85_decode($data));
+}
+else {
+    print(ascii85_encode($data));
+}
