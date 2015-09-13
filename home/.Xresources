@@ -1,0 +1,31 @@
+*URxvt.saveLines: 10000
+*URxvt.foreground: #ffffff
+*URxvt.background: #000000
+*URxvt.reverseVideo: false
+*URxvt.scrollBar: true
+*URxvt.scrollstyle: plain
+*URxvt.color4: #6666ff
+*URxvt.color12: #6666ff
+*URxvt.perl-ext:           default,confirm-paste
+*URxvt.scrollWithBuffer: true
+*URxvt.scrollTtyOutput: false
+*URxvt.scrollTtyKeypress: true
+
+*URxvt.font:         xft:Source Code Pro:size=10
+*URxvt.boldFont:       xft:Source Code Pro:size=10:bold
+*URxvt.italicFont:     xft:Source Code Pro:size=10:italic
+*URxvt.boldItalicFont:   xft:Source Code Pro:size=10:bold:italic
+
+*URxvt.keysym.C-y: up\n
+
+*URxvt.perl-ext-common:  default,matcher
+*URxvt.url-launcher:      /usr/bin/firefox
+*URxvt.matcher.button:   1
+
+*URxvt.keysym.M-C-1: command:\033]710;xft:Source Code Pro:size=6\007\033]711;xft:Source Code Pro:size=8:bold\007\033]712;xft:Source Code Pro:size=8:italic\007\033]713;xft:Source Code Pro:size=8:bold:italic\007
+*URxvt.keysym.M-C-2: command:\033]710;xft:Source Code Pro:size=7\007\033]711;xft:Source Code Pro:size=9:bold\007\033]712;xft:Source Code Pro:size=9:italic\007\033]713;xft:Source Code Pro:size=9:bold:italic\007
+*URxvt.keysym.M-C-3: command:\033]710;xft:Source Code Pro:size=8\007\033]711;xft:Source Code Pro:size=10:bold\007\033]712;xft:Source Code Pro:size=10:italic\007\033]713;xft:Source Code Pro:size=10:bold:italic\007
+*URxvt.keysym.M-C-4: command:\033]710;xft:Source Code Pro:size=9\007\033]711;xft:Source Code Pro:size=11:bold\007\033]712;xft:Source Code Pro:size=11:italic\007\033]713;xft:Source Code Pro:size=11:bold:italic\007
+*URxvt.keysym.M-C-5: command:\033]710;xft:Source Code Pro:size=10\007\033]711;xft:Source Code Pro:size=12:bold\007\033]712;xft:Source Code Pro:size=12:italic\007\033]713;xft:Source Code Pro:size=12:bold:italic\007
+*URxvt.keysym.M-C-6: command:\033]710;xft:Source Code Pro:size=11\007\033]711;xft:Source Code Pro:size=17:bold\007\033]712;xft:Source Code Pro:size=17:italic\007\033]713;xft:Source Code Pro:size=17:bold:italic\007
+
