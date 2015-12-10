@@ -7,6 +7,7 @@ set sw=4
 set expandtab
 set laststatus=2
 set shiftround
+set nowrap
 filetype on
 filetype plugin on
 
