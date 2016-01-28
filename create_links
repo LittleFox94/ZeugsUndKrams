@@ -7,14 +7,20 @@ for f in home/*; do
     echo "$link_path => $target"
 
     if [[ -e $target ]]; then
-        read -n1 -p "$target already exists. Delete, move, ignore? [d/m/i] " delete_file
+        read -n1 -p "$target already exists. diff, remove, move, ignore, cancel? [d/r/m/i/c] " delete_file
         echo
         case $delete_file in
-            d) 
+            r)
                 rm -r -- "$target"
+            ;;
+            d)
+                diff -y "$target" "$link_path"
             ;;
             m)
                 mv -i -- "$target"{,.bak}
+            ;;
+            c)
+                exit 0
             ;;
         esac
 
