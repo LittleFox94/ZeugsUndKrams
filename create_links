@@ -1,0 +1,28 @@
+#!/bin/bash
+shopt -s dotglob
+
+for f in home/*; do
+    link_path=$PWD/$f
+    target=$HOME/${f##*/}
+    echo "$link_path => $target"
+
+    if [[ -e $target ]]; then
+        read -n1 -p "$target already exists. Delete, move, ignore? [d/m/i] " delete_file
+        echo
+        case $delete_file in
+            d) 
+                rm -r -- "$target"
+            ;;
+            m)
+                mv -i -- "$target"{,.bak}
+            ;;
+        esac
+
+        [[ -e $target ]] && continue;
+
+        ln -s -- "$link_path" "$target"
+
+    fi
+done 
+
+exit 0
