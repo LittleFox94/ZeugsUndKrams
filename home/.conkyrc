@@ -1,19 +1,22 @@
-own_window true
-own_window_type panel
-double_buffer true
-update_interval 0.5
-border_outer_margin 0
-border_inner_margin 0
-gap_x 0
-gap_y 0
-minimum_size 1500 60
-default_color aaaaaa
-override_utf8_locale yes
-default_graph_size 80 5
-default_bar_size 80 5
-mpd_host 172.16.0.5
-mpd_port 8066
-TEXT
+conky.config = {
+    own_window           = false,
+    own_window_type      = "panel",
+    double_buffer        = true,
+    update_interval      = 0.5,
+    border_outer_margin  = 0,
+    border_inner_margin  = 0,
+    gap_x                = 0,
+    gap_y                = 0,
+    minimum_height       = 60,
+    default_color        = aaaaaa,
+    override_utf8_locale = true,
+    mpd_host             = "172.16.0.5",
+    mpd_port             = 8066,
+    default_bar_width    = 80,
+    default_bar_height   = 5
+}
+
+conky.text = [[
 ${color FFFF00}${time KW %V, }${color 00FF00}${time %H:%M:%S}
 ${color FF4444}${time %a, %d %b %y} 
 ${color}$kernel
@@ -52,3 +55,4 @@ ${voffset -27}
 ${color 00ff00}${goto 885}${mpd_artist} - ${mpd_album} - ${mpd_title}
 ${voffset 10}\
 ${voffset -600}\
+]]

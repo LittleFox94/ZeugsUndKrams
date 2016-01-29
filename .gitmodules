@@ -1,3 +1,9 @@
 [submodule "home/.vim/bundle/syntax"]
 	path = home/.vim/bundle/syntax
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "home/.bash/git-aware-prompt"]
+	path = home/.bash/git-aware-prompt
+	url = https://github.com/jimeh/git-aware-prompt.git
+[submodule "home/.vim/bundle/jshint2.vim"]
+	path = home/.vim/bundle/jshint2.vim
+	url = https://github.com/Shutnik/jshint2.vim.git
