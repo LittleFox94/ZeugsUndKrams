@@ -116,3 +116,9 @@ function mkcd {
 	mkdir $1
 	cd $1
 }
+
+function start_quartus {
+    export QUARTUS_ROOTDIR=/opt/altera_lite/15.1/quartus
+    source /opt/altera_lite/15.1/quartus/adm/qenv.sh
+    quartus
+}
