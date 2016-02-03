@@ -1,0 +1,23 @@
+#!/bin/bash
+
+case $1 in
+    detect)
+        detect=$(xrandr --current | grep "DP2-2 connected")
+
+        if [ ! -z "$detect" ]; then
+            external-monitor dock
+        else
+            external-monitor undock
+        fi
+        ;;
+    dock)
+        sleep 3
+        xrandr --output DP2-2 --auto --primary --output eDP1 --right-of DP2-2
+        ;;
+    undock)
+        xrandr --output DP2-2 --off --output eDP1 --primary
+        ;;
+esac
+
+FvwmCommand restart
+hsetroot -cover /home/mgr/.fvwm/wallpaper.jpg
