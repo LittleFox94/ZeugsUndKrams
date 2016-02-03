@@ -126,3 +126,8 @@ function start_quartus {
     source /opt/altera_lite/15.1/quartus/adm/qenv.sh
     quartus
 }
+
+function cdhinum {
+    dirs=(*/)
+    cd "${dirs[@]: -1}"
+}

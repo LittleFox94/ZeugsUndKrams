@@ -1,0 +1,10 @@
+BASE_PATH="/home/mgr/ExternalMounts/autinitysrv/mgr/visuv2"
+
+file=$(sed "s~$BASE_PATH~~g" "$BASE_PATH/.dmenu_visu_cache" | dmenu -p VisuV2)
+
+[[ -z $file ]] && exit 0
+
+basename=$(basename $file)
+complete_file=$(echo "$BASEPATH$file")
+
+urxvt -title "$basename ($file)" -fade 20 +sb -depth 32 -bg rgba:2000/2000/2000/dddd -fg white -e vim $BASE_PATH$file
