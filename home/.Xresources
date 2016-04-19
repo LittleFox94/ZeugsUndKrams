@@ -30,3 +30,4 @@
 *URxvt.keysym.M-C-6: command:\033]710;xft:Source Code Pro:size=11\007\033]711;xft:Source Code Pro:size=22:bold\007\033]712;xft:Source Code Pro:size=22:italic\007\033]713;xft:Source Code Pro:size=22:bold:italic\007
 
 URxvt.iconFile:    /usr/share/icons/Adwaita/scalable/apps/utilities-terminal-symbolic.svg
+URxvt.print-pipe: false
