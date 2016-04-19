@@ -1,7 +1,5 @@
 #!/bin/bash
 
-zenity --info --text "Zum Mounten einiger Server wird die Smartcard benötigt.\n\nBitte jetzt Smartcard einlegen und dann OK klicken." > /dev/null 2>&1
-
 pushd /home/mgr/ExternalMounts > /dev/null 2>&1
 total=$(cat AUTOMOUNT | wc -l)
 now=0
@@ -24,5 +22,5 @@ do
     #echo
 
     echo $(($now * 100 / $total))
-done < AUTOMOUNT | zenity --progress
+done < AUTOMOUNT | zenity --progress --auto-close
 popd > /dev/null 2>&1
