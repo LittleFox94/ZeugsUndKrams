@@ -27,7 +27,8 @@ for f in home/*; do
         [[ -e $target ]] && continue;
 
         ln -s -- "$link_path" "$target"
-
+    else
+        ln -s -- "$link_path" "$target"
     fi
 done 
 
