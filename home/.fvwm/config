@@ -1,6 +1,6 @@
 SetEnv PATH $[HOME]/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
-EwmhBaseStruts 0 0 20 60
+EwmhBaseStruts 0 0 19 60
 
 Read Functions.conf
 Read WindowOps.conf
