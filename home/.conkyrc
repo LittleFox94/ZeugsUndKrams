@@ -27,9 +27,9 @@ ${color ffffff}Threads: ${color 00ff00}$threads
 ${color ffffff}Avg: ${color 00ff00}${loadavg 1} ${loadavg 2} ${loadavg 3}
 ${color}${voffset -60}\
 ${goto 150}${color white}eth0${color}
-${goto 130}${upspeedgraph eth0 20,80}${offset 5}${voffset 5}UP: ${upspeed eth0}${voffset 10}${goto 215}TO: ${totalup eth0}${voffset -15}
+${goto 130}${upspeedgraph enp8s0 20,80}${offset 5}${voffset 5}UP: ${upspeed enp8s0}${voffset 10}${goto 215}TO: ${totalup enp8s0}${voffset -15}
 ${voffset -5}\
-${goto 130}${downspeedgraph eth0 20,80}${offset 5}${voffset 5}DO: ${downspeed eth0}${voffset 10}${goto 215}TO: ${totaldown eth0}${voffset -15}
+${goto 130}${downspeedgraph enp8s0 20,80}${offset 5}${voffset 5}DO: ${downspeed enp8s0}${voffset 10}${goto 215}TO: ${totaldown enp8s0}${voffset -15}
 ${voffset -65}\
 ${goto 310}${color white}CPU/MEM${color}
 ${goto 290}${color 446644}\
@@ -51,7 +51,6 @@ ${goto 610}${color 00FF00}${top_mem mem_res 6}${goto 660}${color FFFFFF}${top_me
 ${voffset -60}\
 ${goto 880}${color BBFFBB}root${color 3399ff}${goto 910}${fs_bar 5,80 /} ${color 00ff00}${fs_used /}${color ffff00}/${color 00ff00}${fs_size /}
 ${goto 880}${color BBFFBB}home${color 3399ff}${goto 910}${fs_bar 5,80 /home} ${color 00ff00}${fs_used /home}${color ffff00}/${color 00ff00}${fs_size /home}
-${goto 880}${color BBFFBB}bat0${color 3399ff}${goto 910}${color BBFFBB}${execbar cat /sys/class/power_supply/BAT0/capacity} ${color 00ff00}${exec cat /sys/class/power_supply/BAT0/capacity}%
 ${color 505050}${goto 880}${mpd_bar 11,470}
 ${voffset -27}
 ${color 00ff00}${goto 885}${mpd_smart}
