@@ -26,7 +26,7 @@ ${color ffffff}Uptime: ${color 00ff00}$uptime
 ${color ffffff}Threads: ${color 00ff00}$threads
 ${color ffffff}Avg: ${color 00ff00}${loadavg 1} ${loadavg 2} ${loadavg 3}
 ${color}${voffset -60}\
-${goto 150}${color white}eth0${color}
+${goto 150}${color white}enp8s0${color}
 ${goto 130}${upspeedgraph enp8s0 20,80}${offset 5}${voffset 5}UP: ${upspeed enp8s0}${voffset 10}${goto 215}TO: ${totalup enp8s0}${voffset -15}
 ${voffset -5}\
 ${goto 130}${downspeedgraph enp8s0 20,80}${offset 5}${voffset 5}DO: ${downspeed enp8s0}${voffset 10}${goto 215}TO: ${totaldown enp8s0}${voffset -15}
