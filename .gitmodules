@@ -10,3 +10,6 @@
 [submodule "home/.vim/bundle/vim-perl"]
 	path = home/.vim/bundle/vim-perl
 	url = https://github.com/vim-perl/vim-perl.git
+[submodule "home/.vim/bundle/vim-capnp"]
+	path = home/.vim/bundle/vim-capnp
+	url = https://github.com/cstrahan/vim-capnp

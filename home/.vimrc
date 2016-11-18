@@ -1,80 +1,59 @@
-execute pathogen#infect()
+" first some basics
+set number          " line numbers
+set nocompatible    " be VIM, not Vi
+set autoread        " Check files for changes automagically
+set ruler           " enable ruler
+set smartcase       " try to be smart with case when searching
+set hlsearch        " highlight search results
+set lazyredraw      " more performance
+set showmatch       " show matching brackets
+set encoding=utf8   " be 2016
+set ffs=unix,dos    " prefer unix line endings
+set expandtab       " replace tabs with spaces
+set smarttab        " .. but be smart with legacy/foreign files
+set shiftwidth=4    " 1 tab = 4 spaces
+set tabstop=4       "       -""-
+set ai              " enable auto indent
+set si              " .. but be smart
+set nowrap          " never wrap lines
+syntax on           " Syntax highlighting
+color molokai       " Color scheme
 
-syntax on
-color molokai
-set nu
-set ai
-set ts=4
-set sw=4
-set expandtab
-set laststatus=2
-set shiftround
-set nowrap
-filetype on
-filetype plugin on
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-let Tlist_WinWidth = 50
+" plugins
+Plugin 'Vundle/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rust-lang/rust.vim'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'vim-perl/vim-perl'
+Plugin 'benmills/vimux'
+Plugin 'sigidagi/vim-cmake-project'
+Plugin 'leafgarland/typescript-vim'
 
-"------------------------------------------------------------------------------
-" Stuff for explorer
-source /usr/share/vim/vim74/plugin/netrwPlugin.vim
-let g:netrw_winsize=70
+call vundle#end()
+filetype plugin indent on
 
-" Toggle Vexplore with Ctrl-E
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
+" NERDTree settings
+map <C-e> :NERDTreeToggle<CR>
+autocmd vimenter * wincmd p    " switch focus to file instead of NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
 
-" Default to tree mode
-let g:netrw_liststyle=3
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=0
+let g:syntastic_check_on_open=1
+let g:syntastic_cpp_compiler_options=' -std=c++11'
 
-" Change directory to the current buffer when opening files.
-set autochdir
-"------------------------------------------------------------------------------
-
-" perltidy
-"------------------------------------------------------------------------------
-"define :Tidy command to run perltidy on visual selection || entire buffer"
-command -range=% -nargs=* Tidy <line1>,<line2>!perltidy
-
-"run :Tidy on entire buffer and return cursor to (approximate) original position"
-fun DoTidy()
-    let l = line(".")
-    let c = col(".")
-    :Tidy
-    call cursor(l, c)
-endfun
-
-"shortcut for normal mode to run on entire buffer then return to current line"
-au Filetype perl nmap <F2> :call DoTidy()<CR>
-
-"shortcut for visual mode to run on the the current visual selection"
-au Filetype perl vmap <F2> :Tidy<CR>
-"------------------------------------------------------------------------------
-
-au BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
-
-let g:cpp_experimental_template_highlight = 1
-let g:cpp_class_scope_highlight = 1
-
+" YouCompleteMe settings
+let g:ycm_rust_src_path = '/home/littlefox/tmp/rustc-1.10.0'
