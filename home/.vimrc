@@ -25,7 +25,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " plugins
-Plugin 'Vundle/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -36,6 +36,7 @@ Plugin 'vim-perl/vim-perl'
 Plugin 'benmills/vimux'
 Plugin 'sigidagi/vim-cmake-project'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'Icinga/icinga2', { 'rtp': 'icinga2/tools/syntax/vim' }
 
 call vundle#end()
 filetype plugin indent on
