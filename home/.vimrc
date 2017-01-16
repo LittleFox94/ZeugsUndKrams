@@ -2,7 +2,6 @@
 set number          " line numbers
 set nocompatible    " be VIM, not Vi
 set autoread        " Check files for changes automagically
-set ruler           " enable ruler
 set smartcase       " try to be smart with case when searching
 set hlsearch        " highlight search results
 set lazyredraw      " more performance
@@ -37,6 +36,8 @@ Plugin 'benmills/vimux'
 Plugin 'sigidagi/vim-cmake-project'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'Icinga/icinga2', { 'rtp': 'icinga2/tools/syntax/vim' }
+Plugin 'vim-airline/vim-airline'
+Plugin 'ahri/vim-sesspit'
 
 call vundle#end()
 filetype plugin indent on
@@ -48,9 +49,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 
 " Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=0
 let g:syntastic_check_on_open=1
@@ -58,3 +56,8 @@ let g:syntastic_cpp_compiler_options=' -std=c++11'
 
 " YouCompleteMe settings
 let g:ycm_rust_src_path = '/home/littlefox/tmp/rustc-1.10.0'
+
+" Vim-Airline settings
+set laststatus=2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
