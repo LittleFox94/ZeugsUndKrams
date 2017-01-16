@@ -2,5 +2,5 @@
 	path = home/.bash/git-aware-prompt
     url = https://github.com/jimeh/git-aware-prompt.git
 [submodule "home/.vim/bundle/Vundle.vim"]
-    path = home/.vim/bundle/Vundle.vim
-    url = https://github.com/VundleVim/Vundle.vim.git
+	path = home/.vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
