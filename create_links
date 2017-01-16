@@ -30,6 +30,6 @@ for f in home/*; do
     else
         ln -s -- "$link_path" "$target"
     fi
-done 
+done
 
 exit 0
