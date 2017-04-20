@@ -1,4 +1,0 @@
-GET services
-Columns: check_command check_command_expanded
-ResponseHeader: fixed16
-
