@@ -1,4 +1,0 @@
-GET downtimes
-Columns: id type is_service host_name service_description author comment start_time end_time
-ResponseHeader: fixed16
-
