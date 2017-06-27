@@ -1,2 +1,2 @@
 set guioptions=
-set guifont="xft:Literation Mono Powerline"
+set guifont=Literation\ Mono\ Powerline
