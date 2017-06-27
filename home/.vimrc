@@ -44,14 +44,15 @@ Plugin 'dbext.vim'
 Plugin 'mtth/scratch.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vitalk/vim-simple-todo'
-Plugin 'Moria'
+Plugin 'jonathanfilip/vim-lucius'
 
 call vundle#end()
 filetype plugin indent on
 
 " color scheme
-let g:moria_style="black"
-color moria
+let g:lucius_no_term_bg=1
+color lucius
+LuciusBlackHighContrast
 
 " NERDTree settings
 let NERDTreeQuitOnOpen=1
