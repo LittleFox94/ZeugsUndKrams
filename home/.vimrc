@@ -15,6 +15,7 @@ set tabstop=4       "       -""-
 set ai              " enable auto indent
 set si              " .. but be smart
 set nowrap          " never wrap lines
+set hidden          " store buffers in memory
 syntax on           " Syntax highlighting
 color molokai       " Color scheme
 
@@ -38,6 +39,9 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Icinga/icinga2', { 'rtp': 'icinga2/tools/syntax/vim' }
 Plugin 'vim-airline/vim-airline'
 Plugin 'ahri/vim-sesspit'
+Plugin 'vim-scripts/Conque-GDB'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'cpp.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -61,3 +65,8 @@ let g:ycm_rust_src_path = '/home/littlefox/tmp/rustc-1.10.0'
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" ConqueGDB
+let g:ConqueTerm_Color = 2
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_StartMessages = 0
