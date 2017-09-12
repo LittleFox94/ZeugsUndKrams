@@ -52,10 +52,12 @@ Plugin 'jonathanfilip/vim-lucius'
 call vundle#end()
 filetype plugin indent on
 
-" color scheme
-let g:lucius_no_term_bg=1
-color lucius
-LuciusBlackHighContrast
+if exists(":LuciusBlackHighContrast")
+    " color scheme
+    let g:lucius_no_term_bg=1
+    color lucius
+    LuciusBlackHighContrast
+endif
 
 " NERDTree settings
 let NERDTreeQuitOnOpen=1
