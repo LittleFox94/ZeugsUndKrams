@@ -45,6 +45,8 @@ Plugin 'mtth/scratch.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'vitalk/vim-simple-todo'
 Plugin 'jonathanfilip/vim-lucius'
+Plugin 'perl-support.vim'
+Plugin 'cstrahan/vim-capnp'
 
 call vundle#end()
 filetype plugin indent on
@@ -86,14 +88,17 @@ let g:dbext_default_profile_TESTPORTAL = 'type=DBI:user=root:passwd=autinityPlan
 " habbit breaking
 
 " first, no <esc> but jk to get back to normal mode
-inoremap <esc> <nop>
+if has('gui_running')
+    inoremap <esc> <nop>
+end
 inoremap jk <esc>
+vnoremap jk <esc>
 
 " then, no arrow keys but hjkl
-noremap <Up>    :echo "Use HJKL!"<CR>
-noremap <Down>  :echo "Use HJKL!"<CR>
-noremap <Left>  :echo "Use HJKL!"<CR>
-noremap <Right> :echo "Use HJKL!"<CR>
+nnoremap <Up>    :echo "Use HJKL!"<CR>
+nnoremap <Down>  :echo "Use HJKL!"<CR>
+nnoremap <Left>  :echo "Use HJKL!"<CR>
+nnoremap <Right> :echo "Use HJKL!"<CR>
 
 " work specific stuff
 augroup visuv2

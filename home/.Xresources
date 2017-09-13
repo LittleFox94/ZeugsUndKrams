@@ -22,7 +22,7 @@ URxvt.boldItalicFont:   xft:Literation Mono Powerline:size=10:bold:italic
 URxvt.keysym.C-y: up\n
 
 URxvt.perl-ext-common:  default,matcher
-URxvt.url-launcher:      /usr/bin/google-chrome
+URxvt.url-launcher:      /usr/bin/chromium
 URxvt.matcher.button:   1
 
 URxvt.keysym.M-C-1: command:\033]710;xft:Literation Mono Powerline:size=6\007\033]711;xft:Literation Mono Powerline:size=8:bold\007\033]712;xft:Literation Mono Powerline:size=8:italic\007\033]713;xft:Literation Mono Powerline:size=8:bold:italic\007
