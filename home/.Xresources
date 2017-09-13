@@ -9,7 +9,6 @@ URxvt.perl-ext:           default,confirm-paste
 URxvt.scrollWithBuffer: true
 URxvt.scrollTtyOutput: false
 URxvt.scrollTtyKeypress: true
-URxvt.letterSpace: -1
 
 URxvt.depth: 32
 URxvt.background: rgba:0000/0000/0000/a000

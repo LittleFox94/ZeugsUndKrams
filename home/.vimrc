@@ -38,6 +38,9 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Icinga/icinga2', { 'rtp': 'icinga2/tools/syntax/vim' }
 Plugin 'vim-airline/vim-airline'
 Plugin 'ahri/vim-sesspit'
+Plugin 'vim-scripts/Conque-GDB'
+Plugin 'jamessan/vim-gnupg'
+Plugin 'cpp.vim'
 Plugin 'rkitover/perl-vim-mxd'
 Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'dbext.vim'
@@ -51,10 +54,12 @@ Plugin 'cstrahan/vim-capnp'
 call vundle#end()
 filetype plugin indent on
 
-" color scheme
-let g:lucius_no_term_bg=1
-color lucius
-LuciusBlackHighContrast
+if exists(":LuciusBlackHighContrast")
+    " color scheme
+    let g:lucius_no_term_bg=1
+    color lucius
+    LuciusBlackHighContrast
+endif
 
 " NERDTree settings
 let NERDTreeQuitOnOpen=1
@@ -77,6 +82,11 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
+
+" ConqueGDB
+let g:ConqueTerm_Color = 2
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_StartMessages = 0
 
 " xuhdev/vim-latex-live-preview
 let g:livepreview_previewer = 'evince'
