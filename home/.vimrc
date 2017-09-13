@@ -54,12 +54,10 @@ Plugin 'cstrahan/vim-capnp'
 call vundle#end()
 filetype plugin indent on
 
-if exists(":LuciusBlackHighContrast")
-    " color scheme
-    let g:lucius_no_term_bg=1
-    color lucius
-    LuciusBlackHighContrast
-endif
+" color scheme
+let g:lucius_no_term_bg=1
+color lucius
+silent! LuciusBlackHighContrast
 
 " NERDTree settings
 let NERDTreeQuitOnOpen=1
