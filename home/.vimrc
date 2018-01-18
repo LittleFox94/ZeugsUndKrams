@@ -50,6 +50,8 @@ Plugin 'vitalk/vim-simple-todo'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'perl-support.vim'
 Plugin 'cstrahan/vim-capnp'
+Plugin 'joonty/vdebug'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
