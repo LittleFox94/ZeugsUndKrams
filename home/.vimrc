@@ -123,4 +123,13 @@ function Sqlscratch()
     DBSetOption profile=VISUV2
 endfunction
 
+if has("autocmd")
+    augroup templates
+        autocmd BufNewFile *.yml :command Service    read ~/.vim/templates/k8s/service.yml
+        autocmd BufNewFile *.yml :command Ingress    read ~/.vim/templates/k8s/ingress.yml
+        autocmd BufNewFile *.yml :command Pvc        read ~/.vim/templates/k8s/pvc.yml
+        autocmd BufNewFile *.yml :command Deployment read ~/.vim/templates/k8s/deployment.yml
+    augroup END
+endif
+
 map <C-S> :call Sqlscratch()<CR>

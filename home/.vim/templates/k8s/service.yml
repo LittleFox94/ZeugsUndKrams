@@ -1,0 +1,15 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:      
+  namespace: 
+spec:
+  selector:
+    app:
+    env:
+    component:
+  ports:
+  - protocol:   TCP
+    port:       
+    targetPort: 
