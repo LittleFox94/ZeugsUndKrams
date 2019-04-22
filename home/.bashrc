@@ -132,6 +132,9 @@ function cdhinum {
     cd "${dirs[@]: -1}"
 }
 
+# From @binaryDiv, thanks^^
+alias cdtmp='cd $(mktemp -d -p ~/tmp/)'
+
 featurebranch() {
     if [ -z "$2" ]; then
         git checkout master
