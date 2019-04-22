@@ -38,7 +38,6 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'Icinga/icinga2', { 'rtp': 'icinga2/tools/syntax/vim' }
 Plugin 'vim-airline/vim-airline'
 Plugin 'ahri/vim-sesspit'
-Plugin 'vim-scripts/Conque-GDB'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'cpp.vim'
 Plugin 'rkitover/perl-vim-mxd'
@@ -52,6 +51,7 @@ Plugin 'perl-support.vim'
 Plugin 'cstrahan/vim-capnp'
 Plugin 'joonty/vdebug'
 Plugin 'fatih/vim-go'
+Plugin 'kergoth/vim-bitbake'
 
 call vundle#end()
 filetype plugin indent on
