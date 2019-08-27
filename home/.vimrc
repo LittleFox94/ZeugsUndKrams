@@ -52,6 +52,7 @@ Plugin 'cstrahan/vim-capnp'
 Plugin 'joonty/vdebug'
 Plugin 'fatih/vim-go'
 Plugin 'kergoth/vim-bitbake'
+Plugin 'derekwyatt/vim-scala'
 
 call vundle#end()
 filetype plugin indent on
