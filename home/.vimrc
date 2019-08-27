@@ -42,10 +42,7 @@ Plugin 'jamessan/vim-gnupg'
 Plugin 'cpp.vim'
 Plugin 'rkitover/perl-vim-mxd'
 Plugin 'xuhdev/vim-latex-live-preview'
-Plugin 'dbext.vim'
-Plugin 'mtth/scratch.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'vitalk/vim-simple-todo'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'perl-support.vim'
 Plugin 'cstrahan/vim-capnp'
@@ -74,6 +71,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=0
 let g:syntastic_check_on_open=1
 let g:syntastic_cpp_compiler_options=' -std=c++11'
+let g:syntastic_javascript_checkers = ['jshint']
 
 " YouCompleteMe settings
 let g:ycm_rust_src_path = '/home/littlefox/tmp/rustc-1.10.0'
@@ -84,17 +82,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
 
-" ConqueGDB
-let g:ConqueTerm_Color = 2
-let g:ConqueTerm_CloseOnEnd = 1
-let g:ConqueTerm_StartMessages = 0
-
 " xuhdev/vim-latex-live-preview
 let g:livepreview_previewer = 'evince'
-
-" dbext
-let g:dbext_default_profile_VISUV2     = 'type=DBI:user=root:passwd=autinityPlanet:driver=mysql:conn_parms=database=VISUV2;host=dbsrv'
-let g:dbext_default_profile_TESTPORTAL = 'type=DBI:user=root:passwd=autinityPlanet:driver=mysql:conn_parms=database=CMS_223;host=testportal'
 
 " habbit breaking
 
@@ -111,18 +100,6 @@ nnoremap <Down>  :echo "Use HJKL!"<CR>
 nnoremap <Left>  :echo "Use HJKL!"<CR>
 nnoremap <Right> :echo "Use HJKL!"<CR>
 
-" work specific stuff
-augroup visuv2
-    au!
-    autocmd BufRead /mnt/sshfs/autinitysrv/mgr/visuv2/* DBSetOption profile=VISUV2
-augroup end
-
-function Sqlscratch()
-    Scratch
-    set ft=sql
-    nnoremap <buffer> q :bd!<CR>
-    DBSetOption profile=VISUV2
-endfunction
 
 if has("autocmd")
     augroup templates
@@ -134,3 +111,8 @@ if has("autocmd")
 endif
 
 map <C-S> :call Sqlscratch()<CR>
+
+" language specific settings
+autocmd FileType typescript setlocal sw=2
+autocmd FileType xml        setlocal sw=2
+autocmd FileType yaml       setlocal sw=2
