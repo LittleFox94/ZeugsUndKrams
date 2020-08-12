@@ -1,12 +1,13 @@
 [submodule "home/.bash/git-aware-prompt"]
-	path = home/.bash/git-aware-prompt
-    url = https://github.com/jimeh/git-aware-prompt.git
+    path = home/.bash/git-aware-prompt
+    url  = https://github.com/jimeh/git-aware-prompt.git
 [submodule "home/.vim/bundle/Vundle.vim"]
-	path = home/.vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
+    path   = home/.vim/bundle/Vundle.vim
+    url    = https://github.com/VundleVim/Vundle.vim.git
+    branch = master
 [submodule "home/.local/share/dracula/mutt"]
-	path = home/.local/share/dracula/mutt
-	url = https://github.com/dracula/mutt.git
+    path = home/.local/share/dracula/mutt
+    url = https://github.com/dracula/mutt.git
 [submodule "home/.local/share/dracula/kitty"]
-	path = home/.local/share/dracula/kitty
-	url = https://github.com/dracula/kitty.git
+    path = home/.local/share/dracula/kitty
+    url = https://github.com/dracula/kitty.git
