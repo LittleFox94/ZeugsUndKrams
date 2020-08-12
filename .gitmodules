@@ -4,3 +4,9 @@
 [submodule "home/.vim/bundle/Vundle.vim"]
 	path = home/.vim/bundle/Vundle.vim
 	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "home/.local/share/dracula/mutt"]
+	path = home/.local/share/dracula/mutt
+	url = https://github.com/dracula/mutt.git
+[submodule "home/.local/share/dracula/kitty"]
+	path = home/.local/share/dracula/kitty
+	url = https://github.com/dracula/kitty.git

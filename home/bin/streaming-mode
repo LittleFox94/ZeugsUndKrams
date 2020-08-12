@@ -1,0 +1,26 @@
+#!/bin/bash
+
+rename_workspaces() {
+    action=$1
+    for ws in $(seq 1 10); do
+        if [ $action = 'secondary' ]; then
+            i3-msg "rename workspace $ws to P$ws"
+            i3-msg "rename workspace $(($ws + 10)) to P$(($ws + 10))"
+        elif [ $action = 'primary' ]; then
+            i3-msg "rename workspace P$ws to $ws"
+            i3-msg "rename workspace P$(($ws + 10)) to $(($ws + 10))"
+        fi
+    done
+}
+
+old_num=$(i3-msg -t get_workspaces | jq '.[]|select(.visible)|.num')
+
+rename_workspaces secondary
+i3-msg "rename workspace to 1"
+
+touch ~/.streaming-mode
+obs
+rm ~/.streaming-mode
+
+i3-msg "rename workspace to P$old_num"
+rename_workspaces primary
