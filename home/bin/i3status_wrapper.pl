@@ -56,6 +56,7 @@ sub init_calendar {
 
 my $dt_formatter = DateTime::Format::Strptime->new(
     pattern   => '%c',
+    locale    => 'de_DE.UTF-8',
 );
 
 my $calendar_entries     = [];
@@ -74,6 +75,10 @@ while (my ($statusline) = (<STDIN> =~ /^,?(.*)/)) {
             if(time - $calendar_last_update > 300) {
                 $calendar_entries     = $calendar_object->GetEvents(time, time + 86400, 1);
                 $calendar_last_update = time;
+            }
+
+            if($calendar_entries && $calendar_entries->@*) {
+                $calendar_entries =  [sort { $a->[4] <=> $b->[4] } $calendar_entries->@*];
             }
 
             if(my $entry = $calendar_entries->[0]) {
@@ -96,7 +101,7 @@ while (my ($statusline) = (<STDIN> =~ /^,?(.*)/)) {
 
                 unshift(@blocks,
                     {
-                        full_text => "Upcoming event: $name (starting $from_ts_formatted)",
+                        full_text => "$name (Beginn $from_ts_formatted)",
                         color     => $color,
                     },
                 );
