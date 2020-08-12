@@ -1,0 +1,4 @@
+load-module module-zeroconf-discovery
+load-module module-native-protocol-tcp
+
+.include /etc/pulse/default.pa
