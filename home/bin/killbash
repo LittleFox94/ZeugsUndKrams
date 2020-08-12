@@ -1,5 +1,0 @@
-#!/bin/bash
-for pid in $(pgrep bash); do
-   [[ $pid == $BASHPID ]] && continue
-   pgrep -P $pid > /dev/null || kill -1 $pid
-done

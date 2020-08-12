@@ -1,0 +1,5 @@
+#!/bin/sh
+
+SHRUG='¯\_(ツ)_/¯'
+
+echo -n $SHRUG | xclip -selection clipboard -in

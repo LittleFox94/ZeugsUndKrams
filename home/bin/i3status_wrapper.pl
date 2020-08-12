@@ -69,108 +69,125 @@ while (my ($statusline) = (<STDIN> =~ /^,?(.*)/)) {
     }
 
     my @blocks = decode_json($statusline)->@*;
+    my @new_blocks;
 
-    if($calendar_object) {
-        eval {
-            if(time - $calendar_last_update > 300) {
-                $calendar_entries     = $calendar_object->GetEvents(time, time + 86400, 1);
-                $calendar_last_update = time;
+    if(! -f '.streaming-mode') {
+        if($calendar_object) {
+            eval {
+                if(time - $calendar_last_update > 300) {
+                    $calendar_entries     = $calendar_object->GetEvents(time, time + 86400, 1);
+                    $calendar_last_update = time;
+                }
+
+                if($calendar_entries && $calendar_entries->@*) {
+                    $calendar_entries =  [sort { $a->[4] <=> $b->[4] } $calendar_entries->@*];
+                }
+
+                if(my $entry = $calendar_entries->[0]) {
+                    my $name    = $entry->[1];
+                    utf8::decode($name);
+                    my $from_ts = $entry->[4];
+                    my $to_ts   = $entry->[5];
+    
+                    my $color = ($from_ts - time) <= 300 ? '#FF0000'
+                              : ($from_ts - time) <= 1800 ? '#FF9900'
+                              : '#00AA55';
+    
+                    my @time = gmtime($from_ts - time);
+    
+                    my $dt_start = DateTime->from_epoch(epoch => $from_ts);
+                    $dt_start->set_time_zone('Europe/Berlin');
+    
+                    my $from_ts_formatted = ($from_ts - time) <= 300 ? ('in ' . sprintf("%02dm / %02ds", $time[1], $time[0]))
+                                          : $dt_formatter->format_datetime($dt_start);
+
+                    unshift(@new_blocks,
+                        {
+                            full_text => "$name (Begin $from_ts_formatted)",
+                            color     => $color,
+                        },
+                    );
+                }
+            };
+        }
+        else {
+            init_calendar();
+        }
+
+        if($mpd) {
+            local $@;
+            eval { $mpd->ping };
+
+            if($@) {
+                $mpd = undef;
             }
+            else {
+                my $status = $mpd->update_status;
+                my $current_song = $mpd->current_song;
+                my $song         = $current_song->{Artist} . ' / ' . $current_song->{Album} . ' / ' . $current_song->{Title};
+                my $mpd_state    = $mpd->state;
+                my $state        = $mpd_state_translation{$mpd_state};
 
-            if($calendar_entries && $calendar_entries->@*) {
-                $calendar_entries =  [sort { $a->[4] <=> $b->[4] } $calendar_entries->@*];
-            }
+                if($mpd_state eq 'stop') {
+                    $song = 'No music playing 😲 ';
+                } else {
+                    $song .= ' (' . join('/', map { $timer_formatter->format_duration(DateTime::Duration->new(seconds => $_)) } split(':', $status->{time})) . ')';
+                }
 
-            if(my $entry = $calendar_entries->[0]) {
-                my $name    = $entry->[1];
-                utf8::decode($name);
-                my $from_ts = $entry->[4];
-                my $to_ts   = $entry->[5];
-
-                my $color = ($from_ts - time) <= 300 ? '#FF0000'
-                          : ($from_ts - time) <= 1800 ? '#FF9900'
-                          : '#00AA55';
-
-                my @time = gmtime($from_ts - time);
-
-                my $dt_start = DateTime->from_epoch(epoch => $from_ts);
-                $dt_start->set_time_zone('Europe/Berlin');
-
-                my $from_ts_formatted = ($from_ts - time) <= 300 ? ('in ' . sprintf("%02dm / %02ds", $time[1], $time[0]))
-                                      : $dt_formatter->format_datetime($dt_start);
-
-                unshift(@blocks,
+                unshift(@new_blocks,
                     {
-                        full_text => "$name (Beginn $from_ts_formatted)",
-                        color     => $color,
+                        full_text => $state . ' ' . $song,
+                        color     => '#AAAAFF',
                     },
                 );
             }
-        };
-    }
-    else {
-        init_calendar();
-    }
-
-    if($mpd) {
-        local $@;
-        eval { $mpd->ping };
-
-        if($@) {
-            $mpd = undef;
         }
         else {
-            my $status = $mpd->update_status;
-            my $current_song = $mpd->current_song;
-            my $song         = $current_song->{Artist} . ' / ' . $current_song->{Album} . ' / ' . $current_song->{Title};
-            my $mpd_state    = $mpd->state;
-            my $state        = $mpd_state_translation{$mpd_state};
+            $mpd = eval { Net::MPD->connect; };
+        }
 
-            if($mpd_state eq 'stop') {
-                $song = 'No music playing 😲 ';
-            } else {
-                $song .= ' (' . join('/', map { $timer_formatter->format_duration(DateTime::Duration->new(seconds => $_)) } split(':', $status->{time})) . ')';
-            }
+        my $ts = DateTime->now;
+        my $timer = $ts - $start_time;
 
-            unshift(@blocks,
-                {
-                    full_text => $state . ' ' . $song,
-                    color     => '#AAAAFF',
-                },
-            );
+        my $temp = `cat /sys/class/thermal/thermal_zone0/temp | tr -d '\n'` / 1000;
+
+        for(1..5) {
+            print encode_json([
+                (
+                    {
+                        full_text => $chars[++$ani_idx % @chars],
+                        color     => '#508050',
+                    },
+                    {
+                        full_text => $uname,
+                        color     => '#505050',
+                    },
+                    {
+                        full_text => "$temp°C",
+                        color     => ($temp > 80 ? '#FF0000'
+                                    : $temp > 65 ? '#FFFF00'
+                                    : '#F0F0F0'),
+                    },
+                    {
+                        full_text => $timer_formatter->format_duration($timer),
+                    },
+                ),
+                @new_blocks,
+                @blocks,
+            ]) . ",\n";
+            usleep 180_000;
         }
     }
     else {
-        $mpd = eval { Net::MPD->connect; };
-    }
+        my $ts = DateTime->now;
+        my $timer = $ts - DateTime->from_epoch(epoch => (stat '.streaming-mode')[9]);
 
-    my $ts = DateTime->now;
-    my $timer = $ts - $start_time;
-
-    for(1..5) {
-        my $temp = `cat /sys/class/thermal/thermal_zone0/temp | tr -d '\n'` / 1000;
-        my @new_blocks = (
+        unshift(@new_blocks,
             {
-                full_text => $chars[++$ani_idx % @chars],
-                color     => '#508050',
+                full_text => 'Streaming since ' . $timer_formatter->format_duration($timer),
             },
-            {
-                full_text => $uname,
-                color     => '#505050',
-            },
-            {
-                full_text => "$temp°C",
-                color     => ($temp > 80 ? '#FF0000'
-                            : $temp > 65 ? '#FFFF00'
-                            : '#F0F0F0'),
-            },
-            {
-                full_text => $timer_formatter->format_duration($timer),
-            },
-            @blocks,
         );
 
-        print encode_json(\@new_blocks) . ",\n";
-        usleep 180_000;
+        print encode_json([@new_blocks, @blocks]) . ",\n";
     }
 }

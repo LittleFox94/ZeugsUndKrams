@@ -1,0 +1,3 @@
+#!/bin/sh
+
+touch /tmp/mgr_timer.reset
