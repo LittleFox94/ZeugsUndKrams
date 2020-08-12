@@ -1,2 +1,0 @@
-#!/bin/sh
-xclip -o | qrencode -o - | convert - -resize x800 - | display

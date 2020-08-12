@@ -1,6 +1,0 @@
-#!/bin/sh
-
-eval $(gpg-agent --daemon)
-FvwmCommand "SetEnv GPG_AGENT_INFO $GPG_AGENT_INFO"
-FvwmCommand "SetEnv SSH_AUTH_SOCK $SSH_AUTH_SOCK"
-FvwmCommand "SetEnv SSH_AGENT_PID $SSH_AGENT_PID"
