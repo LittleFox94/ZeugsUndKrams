@@ -1,35 +1,37 @@
 #!/bin/bash
+
 shopt -s dotglob
 
-for f in home/*; do
-    link_path=$PWD/$f
-    target=$HOME/${f##*/}
+file_action() {
+    link_path="$PWD/$1"
+    target=$HOME/${1##*/}
     echo "$link_path => $target"
 
-    if [[ -e $target ]]; then
-        read -n1 -p "$target already exists. diff, remove, move, ignore, cancel? [d/r/m/i/c] " delete_file
+    if [ -e $target -a ! "$target" -ef "$link_path" ]; then
+        read -n1 -p "$target already exists. diff, remove, backup, ignore, cancel? [d/r/b/i/c] " delete_file
         echo
         case $delete_file in
             r)
                 rm -r -- "$target"
+                file_action "$1"
             ;;
             d)
-                diff -y "$target" "$link_path"
+                vimdiff -R "$target" "$link_path"
+                file_action "$1"
             ;;
-            m)
+            b)
                 mv -i -- "$target"{,.bak}
+                file_action "$1"
             ;;
             c)
                 exit 0
             ;;
         esac
-
-        [[ -e $target ]] && continue;
-
-        ln -s -- "$link_path" "$target"
-    else
-        ln -s -- "$link_path" "$target"
+    elif [ ! "$target" -ef "$link_path" ]; then
+        ln -fs -- "$link_path" "$target"
     fi
-done
+}
 
-exit 0
+for f in home/*; do
+    file_action "$f"
+done
