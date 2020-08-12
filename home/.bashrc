@@ -115,6 +115,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+source <(kitty + complete setup bash)
 
 function mkcd {
 	mkdir -p "$1"
@@ -141,3 +142,9 @@ featurebranch() {
     git submodule update
     git push -u origin $1
 }
+
+nw() {
+    kitty -1 --detach
+}
+
+alias icat="kitty +kitten icat"
