@@ -26,18 +26,14 @@ call vundle#begin()
 " plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-conflicted'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'rust-lang/rust.vim'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'vim-perl/vim-perl'
-Plugin 'benmills/vimux'
-Plugin 'sigidagi/vim-cmake-project'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'Icinga/icinga2', { 'rtp': 'icinga2/tools/syntax/vim' }
 Plugin 'vim-airline/vim-airline'
-Plugin 'ahri/vim-sesspit'
 Plugin 'jamessan/vim-gnupg'
 Plugin 'cpp.vim'
 Plugin 'rkitover/perl-vim-mxd'
@@ -46,10 +42,15 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'perl-support.vim'
 Plugin 'cstrahan/vim-capnp'
-Plugin 'joonty/vdebug'
 Plugin 'fatih/vim-go'
-Plugin 'kergoth/vim-bitbake'
+Plugin 'prabirshrestha/vim-lsp'
 Plugin 'derekwyatt/vim-scala'
+Plugin 'pbrisbin/vim-syntax-shakespeare'
+Plugin 'peterhoeg/vim-qml'
+Plugin 'kergoth/vim-bitbake'
+
+let g:yesod_handlers_directories = ['Handler', 'src']
+Plugin 'alx741/yesod.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -116,3 +117,11 @@ map <C-S> :call Sqlscratch()<CR>
 autocmd FileType typescript setlocal sw=2
 autocmd FileType xml        setlocal sw=2
 autocmd FileType yaml       setlocal sw=2
+
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
