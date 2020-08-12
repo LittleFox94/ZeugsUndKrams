@@ -16,10 +16,9 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-PATH="$HOME/bin:$HOME/.yarn/bin:$PATH"
 export CHROMIUM_FLAGS="-ppapi-flash-path=/usr/lib/pepperflashplugin-nonfree/libpepflashplayer.so --ppapi-flash-version=31.0.0.153"
 export CHROME_BIN=chromium
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
-export PATH=$PATH:$HOME/.linkerd2/bin:$HOME/.local/bin:$HOME/bin
+export PATH=$PATH:$HOME/.linkerd2/bin:$HOME/.local/bin:$HOME/bin:$HOME/.yarn/bin
