@@ -21,4 +21,4 @@ export CHROME_BIN=chromium
 
 export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=gasp -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
-export PATH=$PATH:$HOME/.linkerd2/bin:$HOME/.local/bin:$HOME/bin:$HOME/.yarn/bin
+export PATH=$HOME/.linkerd2/bin:$HOME/.local/bin:$HOME/bin:$HOME/.yarn/bin:$PATH
