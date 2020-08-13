@@ -154,6 +154,7 @@ exec --no-startup-id /usr/bin/compton
 exec --no-startup-id /usr/bin/gpg-agent --daemon
 exec --no-startup-id /usr/bin/blueman-applet
 exec --no-startup-id /usr/bin/mopidy
+exec --no-startup-id mara-local-startup
 exec_always --no-startup-id /usr/bin/nitrogen --restore
 
 bindsym $mod+Shift+Home  move workspace to output left
