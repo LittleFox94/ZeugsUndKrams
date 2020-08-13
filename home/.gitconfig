@@ -12,3 +12,5 @@
 	tool = vim-conflicted
 [mergetool "vim-conflicted"]
 	cmd = vim +Conflicted
+[pull]
+	rebase = true
