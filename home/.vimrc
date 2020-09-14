@@ -117,6 +117,9 @@ map <C-S> :call Sqlscratch()<CR>
 autocmd FileType typescript setlocal sw=2
 autocmd FileType xml        setlocal sw=2
 autocmd FileType yaml       setlocal sw=2
+autocmd FileType html       setlocal sw=2
+autocmd FileType scss       setlocal sw=2
+autocmd FileType css        setlocal sw=2
 
 set number relativenumber
 
