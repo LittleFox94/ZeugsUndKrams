@@ -32,6 +32,7 @@ set fast_reply=yes
 set text_flowed=yes
 set user_agent=yes
 set ts_enabled=yes
+set signature="~/.mutt/signature"
 
 set sidebar_visible=yes
 set sidebar_width=40
