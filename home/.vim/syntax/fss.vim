@@ -1,6 +1,6 @@
 " Vim syntax file
 " Language: Fox Script
-" Maintainer: Moritz "LittleFox" Grosch
+" Maintainer: Mara Sophie "LittleFox" Grosch
 
 if exists("b:current_syntax")
     finish
