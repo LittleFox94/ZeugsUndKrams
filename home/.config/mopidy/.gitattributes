@@ -1,0 +1,2 @@
+mopidy.conf filter=git-crypt diff=git-crypt
+auth.json filter=git-crypt diff=git-crypt
