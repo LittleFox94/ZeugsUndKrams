@@ -16,3 +16,5 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[diff "se-sops"]
+	textconv = se-sops --git-filter
