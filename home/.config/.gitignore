@@ -7,6 +7,9 @@
 !/kitty
 !/mopidy
 !/obs-studio
+!/sway
+!/waybar
+!/tofi
 
 !/gajim
 /gajim/*
