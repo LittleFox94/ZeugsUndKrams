@@ -95,6 +95,7 @@ bind index               <Backtab> previous-new-then-unread
 
 macro index          <Return>   "<display-message><sync-mailbox>"
 bind  index,pager    a   group-reply
+macro index          $   "<sync-mailbox><imap-fetch-mail>"
 macro index,pager    d   "<delete-message><sync-mailbox>"                                 "move message to trash"
 macro index,pager    dd  "<purge-message><sync-mailbox>"                                  "delete message"
 macro index,pager    dat "<delete-thread><sync-mailbox>"                                  "move thread to trash"
