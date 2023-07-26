@@ -12,5 +12,7 @@
 	tool = vim-conflicted
 [mergetool "vim-conflicted"]
 	cmd = vim +Conflicted
+[init]
+	defaultBranch = main
 [pull]
 	rebase = true
