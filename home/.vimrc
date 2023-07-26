@@ -18,6 +18,9 @@ set nowrap          " never wrap lines
 set hidden          " keep buffers in memory
 syntax on           " Syntax highlighting
 
+" paste without yanking selection
+vnoremap p "_dP
+
 " Vundle
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -48,6 +51,8 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'pbrisbin/vim-syntax-shakespeare'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'kergoth/vim-bitbake'
+Plugin 'hashivim/vim-terraform'
+Plugin 'juliosueiras/vim-terraform-completion'
 
 let g:yesod_handlers_directories = ['Handler', 'src']
 Plugin 'alx741/yesod.vim'
@@ -82,11 +87,13 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
+let g:airline_section_y = airline#section#create_right(['ffenc', '%{wordcount().chars}/%{wordcount().words}'])
 
 " xuhdev/vim-latex-live-preview
 let g:livepreview_previewer = 'evince'
 
-" habbit breaking
+" configure vim-go to pass "-tags integration" to gopls
+let g:go_gopls_settings = {'buildFlags': ['-tags=integration']}
 
 " first, no <esc> but jk to get back to normal mode
 if has('gui_running')
@@ -95,7 +102,7 @@ end
 inoremap jk <esc>
 vnoremap jk <esc>
 
-" then, no arrow keys but hjkl
+" habbit breaking
 nnoremap <Up>    :echo "Use HJKL!"<CR>
 nnoremap <Down>  :echo "Use HJKL!"<CR>
 nnoremap <Left>  :echo "Use HJKL!"<CR>
