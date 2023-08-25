@@ -178,6 +178,7 @@ for_window [class="Qemu-system-x86_64"]             floating enable
 for_window [class="Kvm"]                            floating enable
 for_window [class="TeamViewer"]                     floating enable
 for_window [class="java-lang-Thread"]               floating enable
+for_window [app_id="evolution-alarm-notify"]        floating enable; sticky enable
 
 for_window [class="obs"]                move scratchpad
 bindsym $mod+Tab scratchpad show
