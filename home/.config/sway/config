@@ -32,7 +32,7 @@ input * {
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym Print      exec grimshot copy output
+bindsym Print      exec grimshot copy area
 
 # start a terminal
 bindsym $mod+Return       exec kitty -1
