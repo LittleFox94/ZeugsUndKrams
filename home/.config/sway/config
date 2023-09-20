@@ -164,10 +164,9 @@ bindsym XF86AudioPlay         exec mpc toggle
 
 exec --no-startup-id /usr/bin/nm-applet
 exec --no-startup-id /usr/bin/lxpolkit
-exec --no-startup-id /usr/bin/gpg-agent --daemon
 exec --no-startup-id /usr/bin/blueman-applet
 exec --no-startup-id /usr/bin/mopidy
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec_always dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway XDG_SESSION_DESKTOP=sway
 
 bindsym $mod+Shift+Home  move workspace to output left
 bindsym $mod+Shift+End move workspace to output right
